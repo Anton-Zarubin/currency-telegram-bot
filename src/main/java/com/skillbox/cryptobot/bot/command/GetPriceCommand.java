@@ -17,7 +17,6 @@ import org.telegram.telegrambots.meta.bots.AbsSender;
 @Slf4j
 @AllArgsConstructor
 public class GetPriceCommand implements IBotCommand {
-
     private final CryptoCurrencyService service;
 
     @Override
@@ -38,7 +37,7 @@ public class GetPriceCommand implements IBotCommand {
             answer.setText("Текущая цена биткоина " + TextUtil.toString(service.getBitcoinPrice()) + " USD");
             absSender.execute(answer);
         } catch (Exception e) {
-            log.error("Ошибка возникла /get_price методе", e);
+            log.error("Error occurred in /get_price command", e);
         }
     }
 }
