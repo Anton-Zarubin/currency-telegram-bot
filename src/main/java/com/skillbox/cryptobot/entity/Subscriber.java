@@ -21,4 +21,7 @@ public class Subscriber {
 
     @Column(name = "subscription_value")
     private Double subscriptionValue;
+
+    @Column(name = "last_notification_time")
+    private Long lastNotificationTime = 0L;
 }

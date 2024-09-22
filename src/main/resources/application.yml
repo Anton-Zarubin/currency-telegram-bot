@@ -4,10 +4,10 @@ telegram:
 #    используйте переменные среды для установки значений
     username: ${BOT_NAME}
     token: ${BOT_TOKEN}
-    notify:
-      delay:
-        value: 10
-        unit: MINUTES
+
+time-values:
+  course-update-frequency-in-minutes: 2
+  notification-frequency-in-millis: 600000
 
 binance:
   api:

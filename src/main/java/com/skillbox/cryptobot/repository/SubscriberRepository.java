@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.UUID;
 
 @Repository
@@ -17,4 +18,8 @@ public interface SubscriberRepository extends JpaRepository<Subscriber, UUID> {
     @Transactional
     @Query(value = "UPDATE subscribers SET subscription_value = ?2 WHERE telegram_user_id = ?1", nativeQuery = true)
     void updateSubscriptionValue(Long userId, Double subscriptionValue);
+
+    @Query(value = "SELECT s FROM Subscriber s WHERE s.subscriptionValue > :price "
+            + "AND s.lastNotificationTime < :timeToNotify")
+    List<Subscriber> findUsersToNotify(@Param("price") double price, @Param("timeToNotify") Long timeToNotify);
 }
